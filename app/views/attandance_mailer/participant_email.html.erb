@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @attandance.event.administre.first_name %> quelqu'un viens de participé à votre événement !</h1>
+    <p>
+    	<p>name : <%= @attandance.user.first_name %></p>
+    <p>titre de l'évènement : <%= @attandance.event.title %></p>
+     
+    </p>
+    <p>
+      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur monsite.fr !
+  </body>
+</html>
+
+
+

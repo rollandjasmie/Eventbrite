@@ -1,0 +1,27 @@
+<div class="container">
+	<%=form_tag url_for(controller: 'events', action:'update'), method: "put" do %>
+	<label>TITLE</label><br>
+	<%=text_field_tag 'title'%><br>
+
+	<label>Description</label><br>
+
+	<%=text_area_tag 'description'%><br>
+
+	<label>sart_date</label><br>
+	<%=text_field_tag 'start_date'%><br><br>
+
+	<label>Duration</label><br>
+	<%=text_field_tag 'duration'%><br>
+
+	<label>Location</label><br>
+	<%=text_field_tag 'location'%><br>
+
+	<label>Price</label><br>
+	<%=text_field_tag 'price'%><br><br>
+
+
+
+	<%=submit_tag 'Modifer'%>
+
+	<% end %>
+</div>

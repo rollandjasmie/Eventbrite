@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="container">
+	<h3>Crée votre Evénement</h3>
+</div>
+	<% if @event.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <p>Nous n'avons pas réussi à créer l'événement' pour la (ou les) raison(s) suivante(s) :</p>
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="container" >
+	
+
+	<%=form_tag url_for(controller: 'events', action: 'create'), method: "post" do %>
+	<div class="form-group" style="margin": -15px;>
+	    <label>Titre</<label>
+	      <%=text_field_tag 'title', nil, class:'form-control'%>
+	  </div>
+	  <div class="form-group" style="margin": 15px;>
+	  <label>Start_date(ex:2020-20-22 14:00:00)</<label>
+	      <%=text_field_tag 'start_date', nil, class:'form-control'%>
+	  </div>
+	  <div class="form-group" style="margin": 15px;>
+	  <label>Duration(plus de 50 munites)</<label>
+	      <%=text_field_tag 'duration', nil, class:'form-control'%>
+	  </div>
+	  <div class="form-group" style="margin": 15px;>
+	  <label>Location</<label>
+	      <%=text_field_tag 'location', nil, class:'form-control'%>
+	  </div>
+	  <div class="form-group" style="margin": 15px; >
+	  <label>Price(tout est payer entre 1-1000)</<label>
+	      <%=text_field_tag 'price', nil, class:'form-control'%>
+	  </div>
+	  <div class="form-group" style="margin": 15px;>
+	  <label>Description(entre 20..1000 lettre)</<label>
+	      <%=text_area_tag 'description', nil, class:'form-control'%>
+	  </div><br></br>
+	  
+	  
+	  <div class="form-group">
+	    <%= submit_tag "Créer le gossip",class:"btn btn-primary" %>
+	   </div>
+	  <% end %>
+</div>
+	
+
+
+
+</body>
+</html>
+
+
+

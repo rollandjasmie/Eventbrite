@@ -1,0 +1,70 @@
+<h1>Page Profil</h1>
+
+	<p>L'événement <%=@event.id%></p>
+	<h3>Avatar actuel</h3>
+	<%if @event.avatar.attached?%>
+	  <%= image_tag @event.avatar.variant(resize: "400x400"), alt: 'avatar' %>
+	<%else%>
+	  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+	<%end%>
+
+	<% if current_user != @event.administre %>
+			
+	<% else %>
+			<%=form_tag event_avatars_path(@event), multipart:true do%><br><br>
+				<%= file_field_tag :avatar %>
+				<%= submit_tag "mettre à jour" %>
+
+				<% end %>
+
+	<% end %><br><br>
+	<table border="1" cellpadding="10" cellspacing="1" width="100%">
+		<thead>
+			<tr>
+				<th>TITLE</th>
+				<th>DESCRIPTION</th>
+				<th>START DATE</th>
+				<th>DURATION</th>
+				<th>LOCATION</th>
+				<th>PRICE</th>
+				<th>E-mail de la créateur</th>
+				<th>Le nombre d'inscrits à l'événement</th>
+				<th>date de fin</th>
+			</tr>
+		</thead>
+	<tbody>
+			<tr>
+				<td><%=@event.title%></td>
+				<td><%=@event.description%></td>
+				<td><%=@event.start_date%></td>
+				<td><%=@event.duration%> minute</td>
+				<td><%=@event.location%></td>
+				<td><%=@event.price%> $</td>
+				<td><%=@event.administre.email%></td>
+				<td><%=@event.users.count%></td>
+				<td><%=@event.end_date%></td>
+
+			</tr>
+	</tbody>
+</table>
+	
+
+	<% if (current_user.id != @event.administre.id) && (@event.users.find_by(email:current_user.email) == nil)  %> 	
+	
+			<% if @event.is_free?%>
+			<%=link_to'rejoidre événement', "/attandances/#{@event.id}/free", method: :post %>
+			<% else %>
+			<p>rejoidre événement<a style="color:red;" href="/events/<%=@event.id%>/attandances/new"> Clique </a></p>
+			<% end %>
+	<% else %>
+		<% if current_user != @event.administre %>
+		<h4 style="color:blue;">Vous participez à cette événement</h4>
+		<% else %>
+			<p>C'est votre événement</p>
+		<% end %>
+	<% end %>
+	
+	<% if current_user != @event.administre %>
+	<% else %>
+	<h3>Mon espace événement<a href="/events/<%=@event.id%>/attandances"> >>>></a></h3>
+	<% end %>

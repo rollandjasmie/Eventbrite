@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		table,
+table {
+border: medium solid #000000;
+width: 50%;
+border-color: red;
+background-color: brown;
+}
+td, th {
+border: thin solid #6495ed;
+width: 50%;
+}
+
+	</style>
+</head>
+<body style="background-color: teal">
+	<center>
+		<marquee behavior="alternate"><h1 style="color:pink;">BIENVENU A VOUS</h1></marquee>
+
+		
+		<h2>Voici tout les événement disponible pour vous</h2>
+	</center>
+	<table border="11" cellpadding="195" cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th colspan="1">TITLE</th>
+				<th>DESCRIPTION</th>
+				
+				<th>DATAIL</th>
+				
+				
+			</tr>
+		</thead>
+	<% @event.each do |i| %>
+		<tbody>
+			<tr>
+				<td><%=i.title%></td>
+				<td><%=i.description%></td>
+				
+				<td><a href="/events/<%=i.id%>">ici</a></td>
+				
+				
+
+
+			</tr>
+	<% end %>
+		</tbody>
+	</table>
+	
+
+	<a style="color:black;" href="">Vers le haut</a>
+	
+	
+</body>
+</html>

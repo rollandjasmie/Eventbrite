@@ -1,0 +1,64 @@
+<style type="text/css">
+		table,
+table {
+border: medium solid #000000;
+width: 50%;
+}
+td, th {
+border: thin solid #6495ed;
+width: 50%;
+}
+th {
+	text-align: center;
+	background-color: red;
+}
+td {
+	background-color: teal;
+}
+</style>
+<h1>Voici votre profil</h1>
+
+<h3>Votre Photo Profil</h3>
+
+
+<%if @user.photo.attached?%>
+  <%= image_tag @user.photo.variant(resize: "400x400"), alt: 'photo' %>
+<%else%>
+  <p>=== Il n'y a pas encore de photo pour le moment vous pouvez ajouter ===</p>
+<%end%>
+<h3>Changer d'photo ?</h3>
+<%= form_tag  user_photo_index_path(@user.id), multipart: true do %>
+  <%= file_field_tag :photo %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
+Nom :<%= @user.first_name %><br>
+Prénom : <%=@user.last_name%><br>
+E-mail : <%=@user.email%><br>
+Description : <%=@user.description%><br></br>
+<span>
+<a href="/users/<%=@user.id%>/edit">Editer votre profil clique </a></h5><br></br>
+<h6>Editer votre email et mot de passe<a href="<%=edit_user_registration_path%>"> go! </a></h6><br></br>
+</span>
+<div class="container">
+	<h3 style="color: brown;">Toute votre événements</h3>
+</div>
+	
+<table  border="1" cellpadding="10" cellspacing="1" width="100%">
+	<thead>
+		<tr>
+			<center>	
+				<th>Titre</th>
+			</center>
+		</tr>
+	</thead>
+	<tbody>
+		
+	<% @event.each do |i| %>
+		<% if i.administre_id == @user.id%>
+		<tr>
+			<td><%=i.title%></td>
+		</tr>	
+		<% end %>
+	<% end %>
+	</tbody>
+</table><br>

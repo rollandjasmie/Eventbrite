@@ -1,0 +1,21 @@
+
+<%=form_tag url_for(controller: 'users', action:'update'), method:'PUT' do %>
+<%=label_tag 'Nom'%><br>
+<%=text_field_tag 'first_name' %><br>
+<%=label_tag 'Prénom'%><br>
+<%=text_field_tag 'last_name' %><br>
+<%=label_tag 'Description'%><br>
+<%=text_area_tag 'description' %><br><br>
+<span  class="btn btn-primary" ><%=submit_tag 'valider' %>
+	
+</span>
+
+
+<% end %>
+
+
+
+
+
+
+
