@@ -71,5 +71,5 @@ gem 'dotenv-rails'
 gem 'dotenv'
 gem 'devise'
 gem 'stripe'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem "mini_magick" 
